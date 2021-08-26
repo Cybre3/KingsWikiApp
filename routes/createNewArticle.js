@@ -1,9 +1,10 @@
+// NPM Library imports
 var express = require('express');
 var router = express.Router();
+// Controllers
+const createArticleControl = require('../controllers/createArticleController');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+/* GET Create new article form. */
+router.get('/', createArticleControl.get_createArticle_form);
 
 module.exports = router;
