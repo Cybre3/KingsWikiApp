@@ -7,7 +7,7 @@ const get_viewArticle = function (req, res, next) {
 };
 
 const get_editArticle_form = function (req, res, next) {
-    res.render("edit", { layout: "main" });
+    res.render("edit");
 };
 
 module.exports = {
