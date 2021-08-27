@@ -35,4 +35,25 @@ const handleErrors = (err) => {
     }
 };
 
+// mongoDB connection
+mongoose
+    .connect(
+      "mongodb+srv://atlasAdmin:abcde12345@cluster0.g2ipk.mongodb.net/cubeWorkshop?retryWrites=true&w=majority",
+      {
+        dbName: "cubeWorkshop",
+        user: "atlasAdmin",
+        pass: "abcde12345",
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    )
+    .then((res) => console.log("db connected"))
+    .catch((err) => console.log(err));
+
+  const db = mongoose.connection;
+  db.on("error", console.error.bind(console, "connection error:"));
+  db.once("open", function () {
+    console.log("Testing Mongoose db.once method");
+  });
+
 */
