@@ -9,10 +9,11 @@ var logger = require("morgan");
 // Route Handlebars Templates
 var homeRouter = require("./routes/home");
 var loginRouter = require("./routes/login");
+var logoutRouter = require("./routes/logout");
 var registerRouter = require("./routes/register");
 var all_articlesRouter = require("./routes/viewAnyArticle");
 var createArticleRouter = require("./routes/createNewArticle");
-// var editArticleRouter = require("./routes/editAnyArticle");
+var editArticleRouter = require("./routes/editAnyArticle");
 
 var app = express();
 
@@ -40,10 +41,11 @@ app.use(express.static(path.join(__dirname, "public")));
 // Routes Defined
 app.use("/", homeRouter);
 app.use("/login", loginRouter);
+// app.use("/logout", logoutRouter);
 app.use("/register", registerRouter);
 app.use("/all-articles", all_articlesRouter);
 app.use("/createArticle", createArticleRouter);
-// app.use("/editArticle", editArticleRouter);
+app.use("/editArticle", editArticleRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
