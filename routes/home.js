@@ -2,9 +2,9 @@
 var express = require('express');
 var router = express.Router();
 // Controllers
-const registerControl = require('../controllers/registerController');
+const homeControl = require('../controllers/homeController');
 
 /* GET home page. */
-router.get('/', registerControl.get_registerForm);
+router.get('/', homeControl.get_homeHbs);
 
 module.exports = router;
