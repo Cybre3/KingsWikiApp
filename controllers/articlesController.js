@@ -1,5 +1,5 @@
 // Models
-const Article = require('../models/Article');
+const Article = require("../models/Article");
 
 // Get routes
 const get_createArticle_form = function (req, res, next) {
@@ -8,13 +8,10 @@ const get_createArticle_form = function (req, res, next) {
 
 // Post routes
 const post_saveArticle_DB = function (req, res, next) {
-    let { title, description } = req.body;
+    const { title, description } = req.body;
     console.log("This is req.body:", req.body);
 
-    const aNewArticle = new Article({
-        title,
-        description
-    });
+    const aNewArticle = new Article({ title, description });
     console.log("This is aNewArticle obj:", aNewArticle);
 
     aNewArticle
@@ -31,9 +28,9 @@ const post_saveArticle_DB = function (req, res, next) {
                 error: err,
             });
         });
-}
+};
 
 module.exports = {
     get_createArticle_form,
-    post_saveArticle_DB
+    post_saveArticle_DB,
 };

@@ -6,10 +6,10 @@
     <h2>Create new article</h2>
     <div class="spacer">
         <form action="/createArticle" method="POST">
-            <label>Article title</label>
-            <input type="text" class="title" />
+            <label for="title">Article title</label>
+            <input type="text" class="title" name="title" value="" />
             <label>Content</label>
-            <textarea></textarea>
+            <textarea type="text" name="description"></textarea>
             <input type="submit" value="Submit" />
         </form>
     </div>

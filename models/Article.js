@@ -7,7 +7,7 @@ const articleSchema = new Schema({
         type: String,
         required: [true, "Please enter a title!"],
         unique: [true, "This title already exists!"],
-        minlength: [5, "Username must be atleast 5 characters"],
+        minlength: [5, "Title must be atleast 5 characters"],
     },
     description: {
         type: String,
