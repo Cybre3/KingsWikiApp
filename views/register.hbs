@@ -5,13 +5,13 @@
 <section>
     <h2>Register</h2>
     <div class="spacer">
-        <form>
-            <label>Username:</label>
-            <input type="text" />
-            <label>Password:</label>
-            <input type="password" />
-            <label>Repeat password:</label>
-            <input type="password" />
+        <form action="/register" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" placeholder="Username" name="username" value="" />
+            <label for="password">Password:</label>
+            <input type="password" placeholder="Password" name="password" value="" />
+            <label for="repeatPassword">Repeat password:</label>
+            <input type="password" placeholder="Repeat-Password" name="repeatPassword" value="" />
             <input type="submit" value="Register" />
         </form>
     </div>

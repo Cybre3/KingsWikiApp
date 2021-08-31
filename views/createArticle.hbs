@@ -5,11 +5,11 @@
 <section>
     <h2>Create new article</h2>
     <div class="spacer">
-        <form>
-            <label>Article title</label>
-            <input type="text" class="title" />
+        <form action="/create-article" method="POST">
+            <label for="title">Article title</label>
+            <input type="text" class="title" name="title" value="" />
             <label>Content</label>
-            <textarea></textarea>
+            <textarea type="text" name="description"></textarea>
             <input type="submit" value="Submit" />
         </form>
     </div>

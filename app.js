@@ -5,15 +5,15 @@ const expHbs = require("express-handlebars");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const mongoose = require("mongoose");
 
 // Route Handlebars Templates
 var homeRouter = require("./routes/home");
 var loginRouter = require("./routes/login");
 var logoutRouter = require("./routes/logout");
 var registerRouter = require("./routes/register");
-var all_articlesRouter = require("./routes/viewAnyArticle");
-var createArticleRouter = require("./routes/createNewArticle");
-var editArticleRouter = require("./routes/editAnyArticle");
+var articlesRouter = require("./routes/articles");
+var createArticleRouter = require("./routes/createArticle");
 
 var app = express();
 
@@ -43,9 +43,8 @@ app.use("/", homeRouter);
 app.use("/login", loginRouter);
 // app.use("/logout", logoutRouter);
 app.use("/register", registerRouter);
-app.use("/all-articles", all_articlesRouter);
-app.use("/createArticle", createArticleRouter);
-app.use("/editArticle", editArticleRouter);
+app.use("/all-articles", articlesRouter);
+app.use("/create-article", createArticleRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -61,6 +60,24 @@ app.use(function (err, req, res, next) {
     // render the error page
     res.status(err.status || 500);
     res.render("error", { layout: false });
+});
+
+// mongoDB connection
+mongoose
+    .connect(
+        "mongodb+srv://atlasAdmin:abcde12345@cluster0.g2ipk.mongodb.net/wikiApp?retryWrites=true&w=majority", {
+            dbName: "wikiApp",
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        }
+    )
+    .then((res) => console.log("db connected"))
+    .catch((err) => console.log(err));
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function () {
+    console.log("Testing Mongoose db.once method");
 });
 
 module.exports = app;
