@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Article = require('../models/Article');
 
 const userSchema = new Schema({
     username: {
         type: String,
         required: [true, "Username is Required, please enter username"],
+        unique: [true, "This username already exists!"],
     },
     password: {
         type: String,
@@ -14,7 +14,7 @@ const userSchema = new Schema({
     createdArticles: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Article",
+            ref: 'Article',
         },
     ],
 });

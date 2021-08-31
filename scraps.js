@@ -56,4 +56,96 @@ mongoose
     console.log("Testing Mongoose db.once method");
   });
 
+  //Schema methods
+  articleSchema.methods.findArticle = function (id) {
+    return mongoose
+        .model("article")
+        .findById(this.id, function (err, user) {
+            if (err) return console.log(err);
+            console.log("User Found!", user);
+            return user;
+        });
+};
+
+// Mongoose methods
+const findMe = async function (req, res, next) {
+    // const artName = document.getElementById('title');
+    // const body = req.body;
+    // console.log(body);
+
+    const cred = "612abf9c2793b1a9a7f682fc";
+
+    try {
+        const data = await Article.findById(cred, function (err, data) {
+            if (err) return console.log(err);
+            console.log("Middleware: Found!", data);
+            req.found = data;
+        });
+    } catch (err) {
+        console.log(err);
+    }
+    // const string = 'working' + credential;
+
+    // return string;
+    next();
+};
+
+const updateMe = async function (req, res, next) {
+    // const artName = document.getElementById('title');
+    // const body = req.body;
+    // console.log(body);
+
+    const cred = "612abf9c2793b1a9a7f682fc";
+
+    try {
+        const data = await Article.findByIdAndUpdate(cred, function (err, data) {
+            if (err) return console.log(err);
+            console.log("Middleware: Found!", data);
+            req.found = data;
+        });
+    } catch (err) {
+        console.log(err);
+    }
+    // const string = 'working' + credential;
+
+    // return string;
+    next();
+};
+
+Cube.findByIdAndUpdate(req.params.id, newCubeInfo, function (err, cube) {
+        if (err) return console.error(err);
+        console.log("cube updated");
+    })
+        .lean()
+        .then((data) => {
+            console.log(
+                "Cube updated DB data:",
+                data,
+                "This cube Id:",
+                req.params.id
+            );
+        })
+        .catch((err) => console.log(err));
+
+const deleteMe = async function (req, res, next) {
+    // const artName = document.getElementById('title');
+    // const body = req.body;
+    // console.log(body);
+
+    const cred = "612abf9c2793b1a9a7f682fc";
+
+    try {
+        const data = await Article.findByIdAndUpdate(cred, function (err, data) {
+            if (err) return console.log(err);
+            console.log("Middleware: Found!", data);
+            req.found_id_db = data._id;
+        });
+    } catch (err) {
+        console.log(err);
+    }
+    // const string = 'working' + credential;
+
+    // return string;
+    next();
+};
 */

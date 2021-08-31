@@ -2,12 +2,12 @@
 <section>
     <h2>Edit article</h2>
     <div class="spacer">
-        <form>
-            <label>Article title</label>
+        <form action="/editArticle/123" method="POST">
+            <label for="title">Article title</label>
             <h3>Astronomy</h3>
-            <label>Content</label>
-            <textarea>
-Astronomy is a natural science that studies celestial objects and phenomena. It applies mathematics, physics, and chemistry, in an effort to explain the origin of those objects and phenomena and their evolution. Objects of interest include planets, moons, stars, galaxies, and comets; the phenomena include supernova explosions, gamma ray bursts, and cosmic microwave background radiation. More generally, all phenomena that originate outside Earth's atmosphere are within the purview of astronomy. A related but distinct subject, physical cosmology, is concerned with the study of the Universe as a whole
+            <label for="description">Content</label>
+            <textarea type="text" name="description" value="">
+ Astronomy is a natural science that studies celestial objects and phenomena. It applies mathematics, physics, and chemistry, in an effort to explain the origin of those objects and phenomena and their evolution. Objects of interest include planets, moons, stars, galaxies, and comets; the phenomena include supernova explosions, gamma ray bursts, and cosmic microwave background radiation. More generally, all phenomena that originate outside Earth's atmosphere are within the purview of astronomy. A related but distinct subject, physical cosmology, is concerned with the study of the Universe as a whole
 
 Astronomy is one of the oldest of the natural sciences. The early civilizations in recorded history, such as the Babylonians, Greeks, Indians, Egyptians, Nubians, Iranians, Chinese, Maya, and many ancient indigenous peoples of the Americas performed methodical observations of the night sky. Historically, astronomy has included disciplines as diverse as astrometry, celestial navigation, observational astronomy and the making of calendars, but professional astronomy is now often considered to be synonymous with astrophysics
                                     

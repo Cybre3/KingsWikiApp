@@ -5,6 +5,9 @@ const Article = require("../models/Article");
 const get_createArticle_form = function (req, res, next) {
     res.render("createArticle");
 };
+const get_editArticle_form = function (req, res, next) {
+    res.render("edit");
+};
 
 // Post routes
 const post_saveArticle_DB = function (req, res, next) {
@@ -30,7 +33,37 @@ const post_saveArticle_DB = function (req, res, next) {
         });
 };
 
+// Patch routes
+const post_editArticle_DB = function (req, res, next) {
+    const dbId = req.foundData;
+    console.log("passed on data", dbId.id);
+
+    const updatedArticle = { description: req.body.description };
+
+    Article.findByIdAndUpdate(dbId.id, updatedArticle, function (err, data) {
+        if (err) return console.log(err);
+        console.log("Article update successful", data);
+    });
+
+    res.redirect("/");
+};
+
+const post_deleteArticle_DB = function (req, res, next) {
+    const dbId = req.foundData;
+    console.log("passed on data", dbId.id);
+
+    Article.findByIdAndRemove(dbId.id, function (err, data) {
+        if (err) return console.log(err);
+        console.log("Article deleted successful", data);
+    });
+
+    res.redirect("/");
+};
+
 module.exports = {
     get_createArticle_form,
+    get_editArticle_form,
     post_saveArticle_DB,
+    post_editArticle_DB,
+    post_deleteArticle_DB
 };
