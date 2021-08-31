@@ -32,9 +32,9 @@ const post_editArticle_DB = function (req, res, next) {
 const post_deleteArticle_DB = async function (req, res, next) {
     const dbId = req.foundData;
 
-    await Article.findByIdAndDelete(dbId.id, function (err, data) {
+    await Article.findByIdAndDelete(dbId.id, function (err) {
         if (err) return console.log(err);
-        console.log("Article deleted successful", data);
+        console.log("Article deleted successful");
     });
 
     res.redirect("/");
