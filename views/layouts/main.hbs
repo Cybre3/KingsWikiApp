@@ -26,18 +26,11 @@
             </nav>
         </aside>
         <div id="container">
-            <header>
-                <a href="/login">Login</a>
-                <a href="/register">Register</a>
-                <span>Welcome, Bob!</span>
-                <a href="/logout">[Logout]</a>
-            </header>
+            {{> headerGuest}}
             <main>
                 {{{body}}}
             </main>
-            <footer>
-                KingUni Wiki &copy; 2020
-            </footer>
+            {{> footer}}
         </div>
     </div>
 </body>

@@ -148,4 +148,13 @@ const deleteMe = async function (req, res, next) {
     // return string;
     next();
 };
+
+// mongoose aggregate
+Activity.find(query)
+        .skip(offset)
+        .limit(limit)
+        .sort({timestamp: -1})
+        .populate('source')
+        .exec()
+
 */
