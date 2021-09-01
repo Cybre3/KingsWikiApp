@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
+require("dotenv").config();
 
 const userSchema = new Schema({
+    
     username: {
         type: String,
         required: [true, "Username is Required, please enter username"],
@@ -14,9 +17,9 @@ const userSchema = new Schema({
     createdArticles: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Article',
+            ref: "Article",
         },
-    ],
+    ]
 });
 
 userSchema.methods.findUser = function () {
@@ -24,6 +27,12 @@ userSchema.methods.findUser = function () {
         console.log("User Found!");
     });
 };
+
+userSchema.pre("save", async function (next) {
+    const salt = await bcrypt.genSalt(+process.env.DB_SALTROUNDS);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+});
 
 const User = mongoose.model("user", userSchema);
 

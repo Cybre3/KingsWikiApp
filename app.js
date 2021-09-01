@@ -6,6 +6,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 // Route Handlebars Templates
 var homeRouter = require("./routes/home");
@@ -65,8 +66,11 @@ app.use(function (err, req, res, next) {
 // mongoDB connection
 mongoose
     .connect(
-        "mongodb+srv://atlasAdmin:abcde12345@cluster0.g2ipk.mongodb.net/wikiApp?retryWrites=true&w=majority", {
-            dbName: "wikiApp",
+        "mongodb+srv://@cluster0.g2ipk.mongodb.net/?retryWrites=true&w=majority",
+        {
+            dbName: process.env.DB_NAME,
+            user: process.env.DB_USER,
+            pass: process.env.DB_PASS,
             useNewUrlParser: true,
             useUnifiedTopology: true,
         }
