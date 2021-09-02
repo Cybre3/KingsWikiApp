@@ -5,7 +5,9 @@
         <input type="text">
         <input type="submit" value="Search">
     </form>
-   {{!--  <a href="/create-article">Create New Article</a>  for user --}}
+    {{#if _id}}
+    <a href="/create-article">Create New Article</a>
+    {{/if}}
 </nav>
 
 {{!-- need hbs if statement for user --}}
