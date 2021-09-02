@@ -3,16 +3,20 @@ const Article = require("../models/Article");
 
 // Get routes
 const get_allArticles = function (req, res, next) {
-    res.render("all-articles");
+    const validUser = req.user;
+    res.render("all-articles", { user: validUser });
 };
 const get_viewArticle = function (req, res, next) {
-    res.render("article");
+    const validUser = req.user;
+    res.render("article", { user: validUser });
 };
 const get_editArticle_form = function (req, res, next) {
-    res.render("edit");
+    const validUser = req.user;
+    res.render("edit", { user: validUser });
 };
 const get_deleteArticle_form = function (req, res, next) {
-    res.render("deleteArticle");
+    const validUser = req.user;
+    res.render("deleteArticle", { user: validUser });
 };
 
 // Post routes

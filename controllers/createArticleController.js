@@ -3,7 +3,8 @@ const Article = require("../models/Article");
 
 // Get Routes
 const get_createArticle_form = function (req, res, next) {
-    res.render("createArticle");
+    const validUser = req.user;
+    res.render("createArticle", { user: validUser });
 };
 
 // Post routes
