@@ -1,5 +1,10 @@
 const get_homeHbs = function (req, res, next) {
-    res.render("home");
+    // Grab the Token cookie
+    const validUser = req.user;
+    
+    console.log(validUser);
+
+    res.render("home", { user: validUser });
 };
 
 module.exports = {

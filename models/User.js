@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const userSchema = new Schema({
     username: {
@@ -14,7 +17,7 @@ const userSchema = new Schema({
     createdArticles: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Article',
+            ref: "Article",
         },
     ],
 });
@@ -24,6 +27,17 @@ userSchema.methods.findUser = function () {
         console.log("User Found!");
     });
 };
+
+userSchema.methods.generateAuthToken = function () {
+    const token = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);
+    return token;
+};
+
+userSchema.pre("save", async function (next) {
+    const salt = await bcrypt.genSalt(+process.env.DB_SALTROUNDS);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+});
 
 const User = mongoose.model("user", userSchema);
 
