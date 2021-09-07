@@ -1,8 +1,11 @@
 <header>
+    {{#if data.validUser._id}}
+    <span>Welcome, Bob!</span>
+    <a href="/logout">[Logout]</a>
+    {{else}}
     <a href="/login">Login</a>
     <a href="/register">Register</a>
-    {{!-- <span>Welcome, Bob!</span>
-    <a href="/logout">[Logout]</a> for user --}}
+    {{/if}}
 </header>
 
 {{!-- use hbs if statement for user --}}

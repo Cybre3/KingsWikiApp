@@ -4,7 +4,6 @@ var router = express.Router();
 // Controllers
 const loginControl = require('../controllers/loginController');
 // Middleware
-const middleware = require('../middleware/auth');
 
 /* GET home page. */
 router.get('/', loginControl.get_loginForm);

@@ -2,13 +2,24 @@
 const Article = require("../models/Article");
 
 // Get routes
-const get_allArticles = function (req, res, next) {
-    const validUser = req.user;
-    res.render("all-articles", { user: validUser });
+const get_allArticles = async function (req, res, next) {
+    const validUser = await req.user;
+    const allArticles = await req.allArticles;
+    let data = {
+        validUser,
+        allArticles
+    }
+    res.render("all-articles", { data });
 };
-const get_viewArticle = function (req, res, next) {
-    const validUser = req.user;
-    res.render("article", { user: validUser });
+const get_viewArticle = async function (req, res, next) {
+    const validUser = await req.user;
+    const article = await req.foundArticle;
+    const data = {
+        validUser,
+        article
+    }
+    console.log(data)
+    res.render("article", { data });
 };
 const get_editArticle_form = function (req, res, next) {
     const validUser = req.user;

@@ -1,9 +1,15 @@
+{{#with data}}
 <h1>Welcome to KingUni Wiki!</h1>
 <section>
     <h2>All articles</h2>
     <div class="spacer">
         <ul>
-            {{> articleLink}}
+            {{#each allArticles}}
+            <li>
+                <a href="/all-articles/{{_id}}">{{title}}</a> {{!-- future route will be {{_id}} from DB --}}
+            </li>
+            {{/each}}
         </ul>
     </div>
 </section>
+{{/with}}
