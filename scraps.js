@@ -150,6 +150,16 @@ const deleteMe = async function (req, res, next) {
     next();
 };
 
+const cube = await Cube.findByIdAndUpdate(
+      req.params.id,
+      { $addToSet: { accessories: accessory._id } },
+      function (err, cube) {
+        // cube.accessories.push(accessory[0]._id);
+
+        console.log("the acces", cube);
+      }
+    );
+
 // mongoose aggregate
 Activity.find(query)
         .skip(offset)

@@ -1,10 +1,16 @@
-const get_homeHbs = function (req, res, next) {
+const get_homeHbs = async function (req, res, next) {
     // Grab the Token cookie
-    const validUser = req.user;
+    const validUser = await req.user;
+    const allArticles = await req.allArticles;
+    const data = {
+        validUser,
+        allArticles
+    }
     
-    console.log(validUser);
+    console.log("homeController Articles", data.allArticles);
+    console.log("homeController user", data.validUser);
 
-    res.render("home", { user: validUser });
+    res.render("home", { data: data });
 };
 
 module.exports = {

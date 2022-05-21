@@ -1,12 +1,18 @@
 // NPM Library imports
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 // Controllers
-const homeControl = require('../controllers/homeController');
+const homeControl = require("../controllers/homeController");
 // middleware
-const middleware = require('../middleware/auth');
+const middlewareSearch = require("../middleware/search");
+const middlewareAuth = require("../middleware/auth");
 
 /* GET home page. */
-router.get('/', middleware.auth, homeControl.get_homeHbs);
+router.get(
+    "/",
+    middlewareSearch.findAllArticles,
+    middlewareAuth.auth,
+    homeControl.get_homeHbs
+);
 
 module.exports = router;
